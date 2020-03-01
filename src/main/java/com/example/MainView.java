@@ -1,6 +1,7 @@
 package com.example;
 
 import com.vaadin.flow.component.dependency.JavaScript;
+import com.vaadin.flow.component.dependency.NpmPackage;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -9,7 +10,8 @@ import com.vaadin.flow.router.Route;
  * The main view contains a button and a click listener.
  */
 @Route("")
-@JavaScript("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+@NpmPackage(value = "jquery", version = "3.4.1")
+@JavaScript("./src/jquery-test.js")
 public class MainView extends VerticalLayout {
 
     public MainView() {
