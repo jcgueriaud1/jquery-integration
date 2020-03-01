@@ -1,22 +1,31 @@
 package com.example;
 
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JavaScript;
+import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-/**
- * The main view contains a button and a click listener.
- */
+
 @Route("")
 @NpmPackage(value = "jquery", version = "3.4.1")
-@JavaScript("./src/jquery-test.js")
+@NpmPackage(value = "jtippy", version = "1.7.2")
+@JsModule("./src/jtippy-loader.js")
+@CssImport("jtippy/jTippy.css")
 public class MainView extends VerticalLayout {
 
     public MainView() {
         H1 title = new H1("Test Page");
         add(title);
+        Anchor anchor = new Anchor("#");
+        anchor.setHref("#");
+        anchor.setText("There are many variations of...");
+        anchor.setTitle("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.");
+        anchor.getElement().setAttribute("data-toggle", "tooltip");
+        add(anchor);
         getElement().executeJs("if (typeof jQuery !== 'undefined') { \n" +
                 "               alert(\"jQuery is loaded globally\");\n" +
                 "             } else {\n" +

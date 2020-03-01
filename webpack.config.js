@@ -3,10 +3,17 @@
  * This file can be used for manual configuration will not be modified if the flowDefaults constant exists.
  */
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 const flowDefaults = require('./webpack.generated.js');
 
 module.exports = merge(flowDefaults, {
-
+    // expose jquery's $ for imports
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
 });
 
 /**
