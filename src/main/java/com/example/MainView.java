@@ -1,5 +1,6 @@
 package com.example;
 
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -26,6 +27,11 @@ public class MainView extends VerticalLayout {
         anchor.setTitle("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.");
         anchor.getElement().setAttribute("data-toggle", "tooltip");
         add(anchor);
+    }
+
+    protected void onAttach(AttachEvent event) {
+        super.onAttach(event);
+        // executing JS should be avoided in constructor
         getElement().executeJs("if (typeof jQuery !== 'undefined') { \n" +
                 "               alert(\"jQuery is loaded globally\");\n" +
                 "             } else {\n" +
