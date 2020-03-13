@@ -17,10 +17,17 @@ public class MainView extends VerticalLayout {
     public MainView() {
         H1 title = new H1("Test Page");
         add(title);
+    }
+
+    protected void onAttach(AttachEvent event) {
+        super.onAttach(event);
+        // executing JS should be avoided in constructor
         getElement().executeJs("if (typeof jQuery !== 'undefined') { \n" +
                 "               alert(\"jQuery is loaded globally\");\n" +
                 "             } else {\n" +
                 "               alert(\"jQuery is not loaded globally\");\n" +
                 "             };");
     }
+
+}
 }
