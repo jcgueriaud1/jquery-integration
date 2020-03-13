@@ -1,5 +1,6 @@
 package com.example;
 
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
